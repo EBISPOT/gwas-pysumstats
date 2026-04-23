@@ -1,0 +1,4 @@
+hgnc_symbol,ensembl_gene_id,p_value,chromosome,base_pair_start,base_pair_end,n_snps
+ISG20,ENSG00000172183,0.0001,1,100,200,20
+,ENSG00000128886,,2,1000,2000,100
+ISG20,,0.05,3,500,400,10

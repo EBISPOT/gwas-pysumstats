@@ -1,0 +1,3 @@
+﻿romosome,base_pair_start,base_pair_end,neg_log10_p_value,p_value,beta,standard_error,statistical_model_type
+1,16600001,,9.45,3.54813E-10,0.048,0.008,additive
+,86415001,86425000,13.661,2.18273E-14,-0.035,,additive
