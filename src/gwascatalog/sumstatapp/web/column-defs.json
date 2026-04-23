@@ -162,6 +162,11 @@
             "code": "n",
             "description": "Sample size per gene.",
             "form": { "value": "n" }
+          },
+          {
+            "code": "n_snps",
+            "description": "Number of SNPs included in the gene-based test.",
+            "form": { "value": "n_snps" }
           }
         ]
       }
