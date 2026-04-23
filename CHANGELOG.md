@@ -2,6 +2,10 @@
 
 ## 2026-04-23
 
+## gwascatalog.sumstatapp 0.1.1
+
+* Make position information mandatory across genes and CNVs in web UI checklist
+
 ### gwascatalog.sumstatlib 1.0.0
 
 * **Breaking change**: Gene-based GWAS position fields (`chromosome`, `base_pair_start`, `base_pair_end`) are now mandatory.
