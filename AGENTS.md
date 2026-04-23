@@ -142,7 +142,14 @@ When adding features:
 uv sync # install workspace dependencies
 nox -s tests # run tests
 nox -s lint # lint
-```
+
+## Completion criteria
+
+Before a task is finished, you must run the lint and tests nox sessions successfully.
+
+Also, always make sure the docs can build:
+
+cd docs && npm run build
 
 ## User persona for validation applications
 
