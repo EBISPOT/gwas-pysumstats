@@ -71,6 +71,7 @@ filterwarnings = [
 
 [tool.ty.src]
 include = ["src/gwascatalog", "sumstatlib/src"]
+exclude = ["src/gwascatalog/sumstatapp/web/validate.py"]
 
 [dependency-groups]
 dev = [
