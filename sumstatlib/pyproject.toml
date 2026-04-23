@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "gwascatalog.sumstatlib"
-version = "0.1.0"
+version = "1.0.0"
 description = "Data validation library for GWAS Catalog summary statistics"
 authors = [
     { name = "Benjamin Wingfield", email = "bwingfield@ebi.ac.uk" },

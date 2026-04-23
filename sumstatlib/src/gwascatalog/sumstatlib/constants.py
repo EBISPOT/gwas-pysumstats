@@ -43,6 +43,7 @@ GENE_FIELD_INDEX_MAP: Final[Mapping[str, int]] = {
     "base_pair_start": 7,
     "base_pair_end": 8,
     "n": 9,
+    "n_snps": 10,
 }
 
 # see decision docs for justification

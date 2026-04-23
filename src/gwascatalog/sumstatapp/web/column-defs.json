@@ -53,9 +53,8 @@
         "id": "gene-position",
         "label": "Position",
         "hint": "How is the position of the gene represented?",
-        "requirement": "optional",
-        "requirementDetail": "If any position field is included, all three must be provided.",
-        "selectionRule": "allOrNone",
+        "requirement": "mandatory",
+        "selectionRule": "all",
         "form": { "inputType": "checkbox", "name": "gene_position" },
         "columns": [
           {
@@ -75,7 +74,7 @@
           }
         ],
         "errors": [
-          { "id": "error-gene-position", "message": "If you include position data, all three fields (chromosome, start, end) are required." }
+          { "id": "error-gene-position", "message": "All position fields (chromosome, start, end) are required." }
         ]
       },
       {
@@ -359,6 +358,12 @@
     {
       "id": "primary-effect-required",
       "summary": "Primary effect size must be designated",
+      "detail": "If more than one effect size column is present, one must be designated as the primary measure of effect. The primary measure of effect is placed in a standardised column in the output file.",
+      "appliesTo": ["gene", "cnv"]
+    }
+  ]
+}
+y": "Primary effect size must be designated",
       "detail": "If more than one effect size column is present, one must be designated as the primary measure of effect. The primary measure of effect is placed in a standardised column in the output file.",
       "appliesTo": ["gene", "cnv"]
     }

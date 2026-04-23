@@ -12,6 +12,9 @@ test_cases = [
     (
         {
             "ensembl_gene_id": "ENSG00000172183",
+            "chromosome": 1,
+            "base_pair_start": 2,
+            "base_pair_end": 1000,
             "p_value": 0.0001,
         },
         validation_context,
@@ -26,10 +29,11 @@ test_cases = [
             "base_pair_end": 1000,
             "z_score": 1,
             "p_value": 0.0001,
+            "n_snps": 100,
         },
         validation_context,
         None,
-        "valid_hgnc_with_z_score",
+        "valid_hgnc_with_z_score_and_n_snps",
     ),
     (
         {
@@ -51,6 +55,9 @@ test_cases = [
     (
         {
             "p_value": 0.0001,
+            "chromosome": 1,
+            "base_pair_start": 2,
+            "base_pair_end": 1000,
         },
         validation_context,
         "Missing ensembl_gene_id or hgnc_symbol",
@@ -60,6 +67,9 @@ test_cases = [
         {
             "ensembl_gene_id": "ENSG00000172183",
             "hgnc_symbol": None,
+            "chromosome": 1,
+            "base_pair_start": 2,
+            "base_pair_end": 1000,
             "z_score": 5,
             "beta": 2,
             "standard_error": 0.01,
@@ -88,10 +98,10 @@ test_cases = [
             "z_score": 3,
             "p_value": 0.0001,
             "base_pair_start": 1000,
-            "base_pair_end": 100,
+            "base_pair_end": 1100,
         },
         validation_context,
-        "Location fields",
+        "Field required",
         "missing_chromosome",
     ),
     (
@@ -101,10 +111,9 @@ test_cases = [
             "p_value": 0.0001,
             "chromosome": 1,
             "base_pair_start": 1000,
-            "base_pair_end": None,
         },
         validation_context,
-        "Location fields",
+        "Field required",
         "missing end position",
     ),
 ]

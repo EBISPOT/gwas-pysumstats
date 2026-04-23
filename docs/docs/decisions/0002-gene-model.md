@@ -29,6 +29,9 @@ common data patterns, a data model was proposed.
 | hgnc_symbol       | Required if `ensembl_gene_id` is not provided; string, official HGNC symbol          |
 | p_value           | Float in (0,1]; mutually exclusive with `neg_log10_p_value`                          |
 | neg_log10_p_value | Float ≥ 0; mutually exclusive with `p_value`                                         |
+| chromosome        | Integer; must match GWAS-SSF standard (1-22, X = 23, Y = 24, MT = 25)                |
+| base_pair_start   | Positive integer; genomic start co-ordinate                                          |
+| base_pair_end     | Positive integer; genomic end co-ordinate; must satisfy `end > start`                |
 
 ### Optional fields
 
@@ -38,8 +41,8 @@ common data patterns, a data model was proposed.
 | odds_ratio   | A primary effect size must be indicated; float                              |
 | hazard_ratio | A primary effect size must be indicated; float                              |
 | z_score      | A primary effect size must be indicated; float                              |
-| chromosome   | Integer; must match GWAS-SSF standard (1-22, X = 23, Y = 24, MT = 25)       |
 | n            | Positive integer; number of samples contributing to this association record |
+| n_snps       | Positive integer; number of SNPs included in the gene-based test            |
 
 Effect size is currently optional because many existing studies do not include a
 measure of effect size, and we have received feedback that lists of genes and p-values
@@ -50,13 +53,11 @@ reported.
 
 ### Conditional fields
 
-| Field                     | Validation notes                                                            |
-|---------------------------|-----------------------------------------------------------------------------|
-| standard_error            | Required if `beta` is provided; float                                       |
-| confidence_interval_lower | Required if `odds_ratio` is provided; float                                 |
-| confidence_interval_upper | Required if `odds_ratio` is provided; float                                 |
-| base_pair_start           | Positive integer; required if `chromosome` is provided                      |
-| base_pair_end             | Positive integer; required if `chromosome` is provided                      |
+| Field                     | Validation notes                                   |
+|---------------------------|----------------------------------------------------|
+| standard_error            | Required if `beta` is provided; float              |
+| confidence_interval_lower | Required if `odds_ratio` is provided; float        |
+| confidence_interval_upper | Required if `odds_ratio` is provided; float        |
 
 ### Custom fields
 
@@ -93,8 +94,7 @@ Documentation will be generated from the annotated Pydantic model.
 The model is responsible for defining output fields in a standardised way,
 like gwas-ssf. Custom fields are appended after the standard fields.
 
-If `chromosome` and `base_pair_start` are provided, output must be sorted
-by these fields.
+Records will always be sorted by `chromosome` and `base_pair_start`.
 
 ## Consequences
 
@@ -102,13 +102,13 @@ Currently, most gene-based GWAS authors share lots of data with the GWAS Catalog
 although this information is unstructured.
 
 After integrating this model with GWAS Catalog data ingest processes, authors
-may choose to only share gene names and p-values with the GWAS Catalog. This may
-reduce per-record completeness.
+must now provide gene names, p-values, and gene positions. This improves
+consistency and enables spatial indexing.
 
-However, user feedback indicates the minimum data has significant value, and
+User feedback indicates the minimum data (including position) has significant value, and
 other resources collect this kind of data (e.g. OpenTargets).
 
-We will accept and monitor the risk of lower completeness in exchange for
+We will accept and monitor the risk of slightly higher barriers to entry in exchange for
 consistency, searchability, and interoperability.
 
 The data model is designed to allow additional fields in the future to respond

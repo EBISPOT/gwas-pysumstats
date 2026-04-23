@@ -1,11 +1,22 @@
 from __future__ import annotations
 
-from typing import Annotated
+from typing import Annotated, Any
 
-from gwascatalog.sumstatlib._pydantic import Field, StringConstraints
+from gwascatalog.sumstatlib._pydantic import (
+    Field,
+    PositiveInt,
+    StringConstraints,
+)
+
+
+def empty_string_to_none(v: Any) -> Any:
+    if v == "":
+        return None
+    return v
+
 
 # reject lowercase letters and any punctuation
-# reject hyphens at the start and end of a symbol
+# ... (rest of hgnc_regex)
 hgnc_regex = r"^[A-Z0-9]+(?:-[A-Z0-9]+)*$"
 
 HGNCGeneSymbol = Annotated[
@@ -18,10 +29,7 @@ HGNCGeneSymbol = Annotated[
 ]
 
 # human ensembl gene IDs:
-# ENS
-# no species prefix
-# G: feature type prefix (genes)
-# 11 digits
+# ... (rest of ensembl_regex)
 ensembl_regex = r"^ENSG\d{11}"
 EnsemblGeneID = Annotated[
     str,
@@ -30,4 +38,8 @@ EnsemblGeneID = Annotated[
         description="Ensembl gene identifier",
         examples=["ENSG00000172183", "ENSG00000219481"],
     ),
+]
+
+NumberOfSNPs = Annotated[
+    PositiveInt, Field(description="Number of SNPs included in the gene-based test")
 ]

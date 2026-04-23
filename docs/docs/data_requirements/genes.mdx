@@ -17,14 +17,14 @@ gwas-info@ebi.ac.uk
 
 ## Example table
 
-| `chromosome` | `base_pair_start` | `base_pair_end` | `hgnc_symbol` | `neg_log10_p_value` | `beta` | `standard_error` |
-|--------------|-------------------|-----------------|---------------|---------------------|--------|------------------|
-| 8            | 94925972          | 94949378        | TP53INP1      | 9.45                | 0.048  | 0.008            |
-| 13           | 32315086          | 32400268        | BRCA2         | 13.661              | -0.035 | 0.003            |
+| `chromosome` | `base_pair_start` | `base_pair_end` | `hgnc_symbol` | `neg_log10_p_value` | `beta` | `standard_error` | `n_snps` |
+|--------------|-------------------|-----------------|---------------|---------------------|--------|------------------|----------|
+| 8            | 94925972          | 94949378        | TP53INP1      | 9.45                | 0.048  | 0.008            | 42       |
+| 13           | 32315086          | 32400268        | BRCA2         | 13.661              | -0.035 | 0.003            | 115      |
 
 :::info Minimum data requirements
 
-Only a gene name (`hgnc_symbol` or `ensembl_gene_id`) and a p-value are required fields for gene-based GWAS.
+A gene name (`hgnc_symbol` or `ensembl_gene_id`), a p-value, and position information (`chromosome`, `base_pair_start`, `base_pair_end`) are required fields for gene-based GWAS.
 
 :::
 

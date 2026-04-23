@@ -33,6 +33,7 @@ def valid_gene_output_columns():
         "p_value",
         "beta",
         "standard_error",
+        "n_snps",
         "extra_test_column",
     }
 
@@ -41,16 +42,8 @@ def valid_gene_output_columns():
 def invalid_gene_errors():
     return {
         ("0", "", "Value error, Only one of ensembl_gene_id or hgnc_symbol may be set"),
-        (
-            "1",
-            "p_value",
-            "Input should be a valid number, unable to parse string as a number",
-        ),
-        (
-            "1",
-            "hgnc_symbol",
-            "String should match pattern '^[A-Z0-9]+(?:-[A-Z0-9]+)*$'",
-        ),
+        ("1", "", "Value error, Missing p-value and negative log-10 p-value"),
+        ("2", "", "Value error, base_pair_end must be greater than base_pair_start"),
     }
 
 

@@ -25,7 +25,7 @@ CNV records will always have `chromosome` and `base_pair_start` records, and mus
 
 `chromosome` and `base_pair_start` are canonically represented as integers in the Pydantic model, so numeric ordering is simple to implement.
 
-Gene records may have `chromosome` and `base_pair_start` records, and will be sorted whenever this information is provided. Records missing these fields will be added to the end of the file.
+Gene records will also always have `chromosome` and `base_pair_start` records, and must always be sorted.
 
 Sorting is done with the Python's standard `sorted()` (Timsort). This approach assumes input files are small enough to fit in memory in their validated representation. In practice input data are around 700MB - 1GB at most.
 
