@@ -1,3 +1,10 @@
+import importlib.metadata
+
+try:
+    __version__ = importlib.metadata.version("gwascatalog.sumstatlib")
+except importlib.metadata.PackageNotFoundError:
+    __version__ = "dev"
+
 from gwascatalog.sumstatlib.cnv.models import CNVSumstatModel
 from gwascatalog.sumstatlib.core.sumstat_enums import GenomeAssembly
 from gwascatalog.sumstatlib.gene.models import GeneSumstatModel
@@ -19,5 +26,3 @@ __all__ = [
     "ValidatedRow",
     "GenomeAssembly",
 ]
-
-__version__ = "0.1.0"

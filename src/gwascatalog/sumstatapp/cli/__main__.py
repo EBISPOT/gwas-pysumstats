@@ -26,6 +26,8 @@ from gwascatalog.sumstatlib import (
     SumstatTable,
 )
 
+from gwascatalog.sumstatapp import __version__
+
 if TYPE_CHECKING:
     from collections.abc import Sequence
 
@@ -255,6 +257,11 @@ def _build_parser() -> argparse.ArgumentParser:
     root = argparse.ArgumentParser(
         prog="gwascatalog",
         description="GWAS Catalog data tools.",
+    )
+    root.add_argument(
+        "--version",
+        action="version",
+        version=f"%(prog)s {__version__}",
     )
     root_sub = root.add_subparsers(dest="group", metavar="COMMAND")
     root_sub.required = True

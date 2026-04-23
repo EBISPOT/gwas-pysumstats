@@ -61,6 +61,10 @@ def copy_wheel(wheel: Path) -> None:
     shutil.copy2(wheel, dest)
     print(f"   Copied to: {dest.relative_to(PROJECT_ROOT)}")
 
+    # Write the wheel filename to a text file for the web worker to discover
+    (DIST_DIR / "wheel.txt").write_text(wheel.name, encoding="utf-8")
+    print(f"   Updated: {DIST_DIR.relative_to(PROJECT_ROOT)}/wheel.txt")
+
 
 def copy_to_dir(target: Path, base_path: str | None = None) -> None:
     """Copy the web app (including built dist/) into *target* for static hosting.

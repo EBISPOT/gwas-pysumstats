@@ -34,6 +34,21 @@
     .vf-footer__notice { margin: 0.25rem 0; }
     .vf-footer__notice a { color: #8bb8e8; }
 
+    /* ── Error Banner ────────────────────────────────────────── */
+    .error-banner {
+      padding: 1rem 1.5rem;
+      margin-bottom: 1.5rem;
+      background: #f8d7da;
+      color: #721c24;
+      border: 1px solid #f5c6cb;
+      border-radius: 4px;
+    }
+    .error-banner a {
+      color: #721c24;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
     /* ── Wizard container ─────────────────────────────────────── */
     .wizard-container {
       max-width: 960px;
@@ -441,6 +456,7 @@
   <!-- Main content                                                  -->
   <!-- ============================================================ -->
   <main class="wizard-container">
+    <div id="error-banner" class="error-banner" hidden role="alert"></div>
     <form id="wizard" novalidate>
 
       <!-- Progress bar (ordered list — semantic for sequential steps) -->

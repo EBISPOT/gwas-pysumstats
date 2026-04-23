@@ -40,9 +40,15 @@ async function init() {
   // via micropip (which resolves URLs relative to the worker script).
   await pyodide.loadPackage(["pydantic", "micropip"]);
   const micropip = pyodide.pyimport("micropip");
-  await micropip.install(
-    "./dist/gwascatalog_sumstatlib-0.1.0-py3-none-any.whl"
-  );
+
+  // Dynamically discover the current wheel filename to avoid breakage when versions change
+  const wheelResp = await fetch(`./dist/wheel.txt?_=${Date.now()}`);
+  if (!wheelResp.ok) {
+    throw new Error(`Failed to fetch wheel.txt: ${wheelResp.statusText}`);
+  }
+  const wheelName = (await wheelResp.text()).trim();
+
+  await micropip.install(`./dist/${wheelName}`);
   micropip.destroy();
 
   // Fetch and execute validate.py to define validate_file() in globals

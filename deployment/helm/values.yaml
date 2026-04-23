@@ -3,7 +3,7 @@ replicaCount: 1
 
 image:
   repository: dockerhub.ebi.ac.uk/gwas/gwas-beyond-snps
-  tag: dev
+  tag: 1.0.0
   pullPolicy: Always
 
 service:

@@ -1065,6 +1065,26 @@ document.addEventListener("DOMContentLoaded", async () => {
       handleValidationProgress(msg);
       return;
     }
+
+    // Handle worker initialization or unhandled errors (id 0)
+    if (msg.type === "error" && msg.id === 0) {
+      console.error("Worker initialization error:", msg.error);
+      hideLoading();
+      const banner = document.getElementById("error-banner");
+      if (banner) {
+        banner.innerHTML = `
+          <strong>Failed to load the Python environment.</strong><br>
+          Error: ${msg.error}<br><br>
+          Please try to <a href="javascript:location.reload()">refresh the page</a>. 
+          If the problem persists, please contact 
+          <a href="mailto:gwas-subs@ebi.ac.uk">gwas-subs@ebi.ac.uk</a>.
+        `;
+        banner.hidden = false;
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+      return;
+    }
+
     const p = _pending.get(msg.id);
     if (!p) return;
     _pending.delete(msg.id);
