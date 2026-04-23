@@ -475,12 +475,12 @@ function updateColumnsNextButton() {
       if (errPvalue) errPvalue.hidden = true;
     }
 
-    // Position: if any checked, all three must be checked
+    // Position: all three fields required
     const posChecked = document.querySelectorAll(
       'input[name="gene_position"]:checked'
     ).length;
     const errGenePosition = document.getElementById("error-gene-position");
-    if (posChecked > 0 && posChecked < 3) {
+    if (posChecked < 3) {
       ready = false;
       if (errGenePosition) errGenePosition.hidden = false;
     } else {

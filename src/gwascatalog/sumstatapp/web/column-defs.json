@@ -196,7 +196,7 @@
           }
         ],
         "errors": [
-          { "id": "error-cnv-position", "message": "All position fields (chromosome, start, end) are required." }
+          { "id": "error-cnv-position", "message": "Please select how the position of the variant is represented. Chromosome, start and end positions are all required." }
         ]
       },
       {

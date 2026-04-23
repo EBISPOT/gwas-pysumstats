@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "gwascatalog.sumstatapp"
-version = "0.1.0"
+version = "0.1.1"
 description = "Data validation applications for GWAS Catalog submissions"
 authors = [
     { name = "Benjamin Wingfield", email = "bwingfield@ebi.ac.uk" },
