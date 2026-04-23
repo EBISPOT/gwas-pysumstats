@@ -5,6 +5,7 @@
 ## gwascatalog.sumstatapp 0.1.1
 
 * Make position information mandatory across genes and CNVs in web UI checklist
+* Fix hard coded wheel file during build step
 
 ### gwascatalog.sumstatlib 1.0.0
 
