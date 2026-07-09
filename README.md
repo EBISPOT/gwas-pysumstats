@@ -23,7 +23,8 @@ This Python monorepo contains packages and documentation designed to help users 
 First, [install uv](https://docs.astral.sh/uv/), then run:
 
 ```
-$ uvx --from gwascatalog-sumstatapp gwascatalog beyondsnp validate --help
+$ uvx --from 'gwascatalog-sumstatapp[pydantic]' \
+    gwascatalog beyondsnp validate --help
 ```
 
 You should see:
